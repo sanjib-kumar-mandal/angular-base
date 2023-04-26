@@ -22,7 +22,7 @@ export class LoaderService {
    * @param loading { boolean }
    * @param url { string }
    */
-  setLoading(loading: boolean, url: string) {
+  setLoading(loading: boolean, url: string): void {
     if(!url) {
       throw new Error("The request URL must be provided to the LoadingService.setLoader function");
     }

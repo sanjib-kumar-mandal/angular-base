@@ -24,7 +24,7 @@ export class LanguageService {
       this.applyLanguage();
   }
 
-  private async applyLanguage() {
+  private async applyLanguage(): Promise<void> {
     // check language
     const languageSaved = this.storageService.getItem(LocalStorageKey.Language) as Language ?? Language.English;
     const langResult = this.availableLanguages.includes(languageSaved) ? languageSaved : Language.English;
@@ -32,7 +32,7 @@ export class LanguageService {
     this.updateLanguage(langResult);  
   }
 
-  async updateLanguage(language: Language) {
+  async updateLanguage(language: Language): Promise<void> {
     const lang = this.languageObserver.value;
     if(lang === Language.Bengali) await setBengaliLanguage();
     if(lang === Language.Hindi) await setHindiLanguage();

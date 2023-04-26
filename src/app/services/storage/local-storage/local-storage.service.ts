@@ -6,17 +6,13 @@ import { LocalStorageKey } from '../local-storage';
 })
 export class LocalStorageService {
 
-  constructor() {}
+  getItem = (key: LocalStorageKey): string | null => localStorage.getItem(key);
 
-  getItem(key: LocalStorageKey): string | null {
-    return localStorage.getItem(key);
-  }
+  setItem = (key: LocalStorageKey, data: string): void => localStorage.setItem(key, data);
 
-  setItem(key: LocalStorageKey, data: string): void {
-    return localStorage.setItem(key, data);
-  }
+  deleteItem = (key: LocalStorageKey): void => localStorage.removeItem(key);
 
-  deleteItem(key: LocalStorageKey): void {
-    return localStorage.removeItem(key);
-  }
+  clear = () => localStorage.clear();
+
+  size = () => localStorage.length;
 }

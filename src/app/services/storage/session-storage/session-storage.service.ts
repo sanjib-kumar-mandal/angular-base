@@ -6,17 +6,13 @@ import { SessionStorageKey } from '../local-storage';
 })
 export class SesionStorageService {
 
-  constructor() { }
+  getItem = (key: SessionStorageKey): string | null => sessionStorage.getItem(key);
 
-  getItem(key: SessionStorageKey): string | null {
-    return localStorage.getItem(key);
-  }
+  setItem = (key: SessionStorageKey, data: string): void => sessionStorage.setItem(key, data);
 
-  setItem(key: SessionStorageKey, data: string): void {
-    return localStorage.setItem(key, data);
-  }
+  deleteItem = (key: SessionStorageKey): void => sessionStorage.removeItem(key);
 
-  deleteItem(key: SessionStorageKey): void {
-    return localStorage.removeItem(key);
-  }
+  clear = () => sessionStorage.clear();
+
+  size = () => sessionStorage.length;
 }

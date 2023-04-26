@@ -17,14 +17,14 @@ export class PlatformService {
     this.detectPlatform();
   }
 
-  private detectPlatform() {
+  private detectPlatform(): void {
     this.isBrowser = this.platform.isBrowser;
     this.isAndroid = this.platform.ANDROID;
     this.isIOS = this.platform.IOS;
     this.detectPlatformEnum();
   }
 
-  private detectPlatformEnum() {
+  private detectPlatformEnum(): void {
     if(this.isAndroid && !this.isBrowser) {
       this.platformEnum = PlatformEnum.ANDROID;
     } else if(this.isIOS && !this.isBrowser) {
@@ -35,7 +35,7 @@ export class PlatformService {
     this.getBrowserDetails()
   }
 
-  getBrowserDetails() {
+  getBrowserDetails(): void {
     if(this.platformEnum === PlatformEnum.BROWSER) {
       const browserAgent = navigator.userAgent;
       let browserName = navigator.appName;

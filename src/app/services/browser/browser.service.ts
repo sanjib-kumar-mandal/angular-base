@@ -6,7 +6,7 @@ import { BrowserOptions, BrowserTarget } from './browser';
 })
 export class BrowserService {
 
-  openBrowser(url: string, target: BrowserTarget = BrowserTarget._blank, options?: BrowserOptions) {
+  openBrowser(url: string, target: BrowserTarget = BrowserTarget._blank, options?: BrowserOptions): void {
     if(options) {
       let feature = '';
       const arr = Object.keys(options);

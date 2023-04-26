@@ -16,7 +16,7 @@ export class ThemeService {
     this.applyTheme();
   }
 
-  private applyTheme() {
+  private applyTheme(): void {
     // get the current theme
     const currentTheme = this.storageService.getItem(LocalStorageKey.Theme) as Theme ?? Theme.Light;
     this.setTheme(AvailableThemes.includes(currentTheme) ? currentTheme : Theme.Light);
@@ -72,7 +72,6 @@ export class ThemeService {
           }
         }
       }
-
     })
   }
 
