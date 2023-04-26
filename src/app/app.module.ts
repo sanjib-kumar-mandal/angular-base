@@ -8,6 +8,7 @@ import { CachingInterceptor } from './interceptors/caching/caching.interceptor';
 import { LoaderInterceptor } from './interceptors/loader/loader.interceptor';
 import { ProfilingInterceptor } from './interceptors/profiling/profiling.interceptor';
 import { environment } from 'src/environment/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { environment } from 'src/environment/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
