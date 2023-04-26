@@ -1,10 +1,11 @@
 import { AfterViewInit, Directive, ElementRef } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
+@UntilDestroy({checkProperties: true})
 @Directive({
-  selector: '[appAnchorTags]'
+  selector: '[anchorTags]'
 })
-export class AnchorTagsDirective implements AfterViewInit {
-  
+export class AnchorTagsDirective implements AfterViewInit {  
 
   private readonly httpRegex: RegExp = new RegExp(/https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/);
 

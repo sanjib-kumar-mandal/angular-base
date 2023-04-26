@@ -1,4 +1,5 @@
 import { Directive, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 class ResizedEvent {
   public newRect: DOMRectReadOnly;
@@ -11,8 +12,9 @@ class ResizedEvent {
   }
 }
 
+@UntilDestroy({checkProperties: true})
 @Directive({
-  selector: '[appResized]'
+  selector: '[resized]'
 })
 export class ResizedDirective implements OnInit, OnDestroy {
 
@@ -37,6 +39,6 @@ export class ResizedDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.observer.disconnect();
+    this.observer?.disconnect();
   }
 }

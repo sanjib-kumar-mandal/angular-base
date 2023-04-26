@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input, NgZone } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { fromEvent, switchMap } from 'rxjs';
 
+@UntilDestroy({checkProperties: true})
 @Directive({
-  selector: '[appCopy]'
+  selector: '[copy]'
 })
 export class CopyDirective {
   
@@ -15,7 +17,8 @@ export class CopyDirective {
   ngOnInit(): void {
     this.zone.runOutsideAngular(() => {
       fromEvent(this.host.nativeElement, 'click').pipe(
-        switchMap(() => navigator.clipboard.writeText(this.copy))).subscribe(() => {
+        switchMap(() => navigator.clipboard.writeText(this.copy)),
+        untilDestroyed(this)).subscribe(() => {
           console.log("Copied!")
       })
     })
