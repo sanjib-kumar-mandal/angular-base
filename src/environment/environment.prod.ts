@@ -1,4 +1,4 @@
-const isProduction: boolean = false;
+const isProduction: boolean = true;
 
 export const environment = {
     production: !!isProduction,
