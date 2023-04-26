@@ -1,8 +1,8 @@
 export enum LocalStorageKey {
-    Theme = 'Theme',
-    Language = 'Language'
+  Theme = 'Theme',
+  Language = 'Language',
 }
 
 export enum SessionStorageKey {
-    UserId = 'UserId'
+  UserId = 'UserId',
 }

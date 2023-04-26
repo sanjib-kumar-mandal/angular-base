@@ -7,7 +7,7 @@ import { PlatformService } from './services/platform/platform.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'base';
@@ -15,5 +15,6 @@ export class AppComponent {
     public platformService: PlatformService,
     public themeService: ThemeService,
     public languageService: LanguageService,
-    public seoService: SeoService) {}
+    public seoService: SeoService
+  ) {}
 }

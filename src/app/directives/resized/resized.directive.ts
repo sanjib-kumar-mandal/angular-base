@@ -1,31 +1,44 @@
-import { Directive, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
 class ResizedEvent {
   public newRect: DOMRectReadOnly;
   public oldRect?: DOMRectReadOnly;
   public isFirst: boolean;
-  public constructor(newRect: DOMRectReadOnly, oldRect: DOMRectReadOnly | undefined) {
-      this.newRect = newRect;
-      this.oldRect = oldRect;
-      this.isFirst = oldRect == null;
+  public constructor(
+    newRect: DOMRectReadOnly,
+    oldRect: DOMRectReadOnly | undefined
+  ) {
+    this.newRect = newRect;
+    this.oldRect = oldRect;
+    this.isFirst = oldRect == null;
   }
 }
 
-@UntilDestroy({checkProperties: true})
+@UntilDestroy({ checkProperties: true })
 @Directive({
-  selector: '[resized]'
+  selector: '[resized]',
 })
 export class ResizedDirective implements OnInit, OnDestroy {
-
-  private observer: ResizeObserver = new ResizeObserver(entries => this.zone.run(() => this.observe(entries)));
+  private observer: ResizeObserver = new ResizeObserver((entries) =>
+    this.zone.run(() => this.observe(entries))
+  );
   private oldRect!: DOMRectReadOnly;
 
   @Output() public readonly resized = new EventEmitter<DOMRectReadOnly>();
 
   constructor(
     private readonly element: ElementRef,
-    private readonly zone: NgZone) {}
+    private readonly zone: NgZone
+  ) {}
 
   ngOnInit(): void {
     this.observer.observe(this.element.nativeElement);

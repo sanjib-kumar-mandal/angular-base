@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoaderService {
-
-  constructor() { }
+  constructor() {}
 
   private loaderState = new BehaviorSubject<boolean>(false);
   isLoading = this.loaderState.asObservable();
@@ -23,16 +22,18 @@ export class LoaderService {
    * @param url { string }
    */
   setLoading(loading: boolean, url: string): void {
-    if(!url) {
-      throw new Error("The request URL must be provided to the LoadingService.setLoader function");
+    if (!url) {
+      throw new Error(
+        'The request URL must be provided to the LoadingService.setLoader function'
+      );
     }
-    if(loading === true) {
+    if (loading === true) {
       this.loadingMap.set(url, loading);
       this.loaderState.next(true);
-    } else if(loading === false && this.loadingMap.has(url)) {
+    } else if (loading === false && this.loadingMap.has(url)) {
       this.loadingMap.delete(url);
     }
-    if(this.loadingMap.size === 0) {
+    if (this.loadingMap.size === 0) {
       this.loaderState.next(false);
     }
   }

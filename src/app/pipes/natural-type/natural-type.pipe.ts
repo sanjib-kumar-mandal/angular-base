@@ -1,10 +1,9 @@
 import { ChangeDetectorRef, NgZone, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'naturalType'
+  name: 'naturalType',
 })
 export class NaturalTypePipe implements PipeTransform {
-
   private typed: string = '';
   private target: string = '';
   private currentIndex: number = -1;
@@ -12,28 +11,29 @@ export class NaturalTypePipe implements PipeTransform {
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private zone: NgZone) { }
+    private zone: NgZone
+  ) {}
 
   transform(value: string, minTypingSpeed: number = 30): any {
-      if(this.target !== value) {
-        clearTimeout(this.timeoutHandle);
-        this.typed = '';
-        this.currentIndex = -1;
-        this.target = value;
-        this.typeNextCharecter(minTypingSpeed);
-      }
-      return this.typed;
+    if (this.target !== value) {
+      clearTimeout(this.timeoutHandle);
+      this.typed = '';
+      this.currentIndex = -1;
+      this.target = value;
+      this.typeNextCharecter(minTypingSpeed);
+    }
+    return this.typed;
   }
 
   private typeNextCharecter(minTypingSpeed: number) {
     this.currentIndex++;
     this.typed = this.target.substr(0, this.currentIndex);
     this.changeDetector.markForCheck();
-    if(this.typed !== this.target) {
+    if (this.typed !== this.target) {
       const time = Math.round(Math.random() * 70) + minTypingSpeed;
       this.timeoutHandle = setTimeout(() => {
         this.zone.run(() => this.typeNextCharecter(minTypingSpeed));
-      }, time)
+      }, time);
     }
   }
 }
