@@ -1,6 +1,6 @@
 {
   "name": "base",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -34,5 +34,19 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
-  }
+  },
+  "author": {
+    "email": "sanjib0248@gmail.com",
+    "name": "Sanjib Kumar mandal"
+  },
+  "license": "MIT",
+  "funding": {
+    "type": "paypal",
+    "url": "https://paypal.me/SANJIBMANDAL?country.x=IN&locale.x=en_GB"
+  },
+  "engines": {
+    "node": ">=16.14.2",
+    "npm": ">=8.5.0"
+  },
+  "keywords": ["angular base project", "angular starter app", "starter application", "angular app", "base app", "starter app"]
 }
